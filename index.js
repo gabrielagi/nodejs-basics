@@ -10,4 +10,6 @@ const server = http.createServer(callbackServer);
 server.on('ClientError', (err, socket) => {
     socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });
-server.listen(8000);
+server.listen(8000, ()=>{
+    console.log('El servidor escucha peticion en https://localhost:8000');
+});
