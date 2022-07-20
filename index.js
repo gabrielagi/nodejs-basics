@@ -9,12 +9,15 @@ const callbackServer = (req, res) => {
     const urlParseada = url.parse(urlActual, true);
     //2. Obtener la ruta
     const ruta = urlParseada.pathname;
-    //3. Enviar una respuesta dependiendo de la ruta
-    if(ruta === '/ruta') {
-    res.end('Estas en /ruta');
-    }
-    else {
-        res.end('Ruta desconocida');
+    //3. Quitar slash de las rutas
+    const rutaLimpia = ruta.replace(/^\/+|\/+$/g, '')
+    //4. Enviar una respuesta dependiendo de la ruta
+    switch(rutaLimpia){
+        case 'ruta':
+            res.end('Estas en /ruta');
+            break;
+        default:
+            res.end('Ruta desconocida')
     }
 };
 
