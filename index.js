@@ -10,7 +10,12 @@ const callbackServer = (req, res) => {
     //2. Obtener la ruta
     const ruta = urlParseada.pathname;
     //3. Quitar slash de las rutas
-    const rutaLimpia = ruta.replace(/^\/+|\/+$/g, '')
+    const rutaLimpia = ruta.replace(/^\/+|\/+$/g, '');
+     //3.1 Obtener el metodo http
+    const metodo = req.method.toLowerCase();
+    //3.2 obtener variables del query url
+    const {query = {}} = urlParseada;
+    console.log({query});
     //4. Enviar una respuesta dependiendo de la ruta
     switch(rutaLimpia){
         case 'ruta':
